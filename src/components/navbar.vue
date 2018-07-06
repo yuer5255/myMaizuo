@@ -1,13 +1,13 @@
 <template>
     <div>
       <mt-header>
-        <router-link to="/leftSide" slot="left">
+        <div @click="showSlide" slot="left">
           <!--<mt-button icon="back">返回</mt-button>-->
           <span class="toolbar-title-icon">
             <i class="iconfont icon-list"></i>
           </span>
           <span>卖座电影</span>
-        </router-link>
+        </div>
         <router-link to="/user" class="user iconfont icon-user" slot="right"></router-link>
       </mt-header>
     </div>
@@ -15,7 +15,12 @@
 
 <script>
     export default {
-        name: "navbar"
+        name: "navbar",
+        methods:{
+          showSlide(){
+
+          }
+        }
     }
 </script>
 
