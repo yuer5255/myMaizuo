@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/home/index'
-import Slide from '@/components/slide'
+import User from '@/views/user/user'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(Router)
@@ -11,12 +11,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'home',
+      component: Home,
+      alias: '/home'
     },
     {
-      path: '/slide',
-      component: Slide
+      path: '/user',
+      name: 'user',
+      component: User
     }
   ]
 })

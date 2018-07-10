@@ -1,26 +1,30 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <slide></slide>
-    <router-view/>
+    <div class="application-view">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
 import navbar from '@/components/navbar'
-import slide from '@/components/slide'
 export default {
   name: 'App',
   components: {
-    navbar,slide
+    navbar
   }
 }
 </script>
 
-<style>
+<style lang="less">
 @import "assets/style/icon.css";
 @import "assets/style/reset.css";
 #app {
   background: #ebebeb;
+  height: 100%;
+  .application-view{
+    margin-top: 50px;
+  }
 }
 </style>

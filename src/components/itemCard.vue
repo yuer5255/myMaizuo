@@ -1,8 +1,10 @@
 <template>
     <div class="container">
-      <div class="card">
+      <div class="card now-playing">
         <!--1.图片-->
-        <div class="card-img"></div>
+        <div class="card-img">
+          <img src="../assets/img/item.jpg">
+        </div>
         <!--2.文字-->
         <div class="card-text">
           <!--左侧电影名+影院-->
@@ -12,6 +14,36 @@
           </div>
           <!--右侧评分-->
           <div class="score">8.5</div>
+        </div>
+
+        <!-- 更多 -->
+        <div class="more-cinema">
+          更多热映电影
+        </div>
+      </div>
+
+      <div class="card coming-soon">
+        <!-- 分割线 即将上映 -->
+        <div class="coming">
+          <p class="upcoming">即将上映</p>
+        </div>
+        <!--1.图片-->
+        <div class="card-img">
+          <img src="../assets/img/coming.jpg">
+        </div>
+        <!--2.文字-->
+        <div class="card-text">
+          <!--左侧电影名+影院-->
+          <div class="detail">
+            <p class="cinema-name">我说的都是真的</p>
+          </div>
+          <!--右侧评分-->
+          <div class="cinema-date">12月31日</div>
+        </div>
+
+        <!-- 更多 -->
+        <div class="more-cinema">
+          更多即将上映电影
         </div>
       </div>
     </div>
@@ -26,14 +58,16 @@
 <style scoped lang="less">
 .container{
   width: 100%;
-  height: 240px;
+  height: 100%;
   padding: 18px 0 10px;
 
   .card-img{
-    height: 191px;
-    margin: 0 15px;
-    background: url("../assets/img/item.jpg") no-repeat;
-    background-size: 100%;
+    height: 190px;
+    margin: 0 10px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .card-text{
@@ -65,6 +99,44 @@
       margin-right: 15px;
       font-size: 18px;
     }
+
+    .cinema-date{
+      font-size: 12px;
+      margin: 0 10px;
+      color: rgb(245, 162, 125);
+    }
+  }
+}
+
+.more-cinema{
+  width: 160px;
+  height: 30px;
+  border: 1px solid #aaa;
+  border-radius: 15px;
+  margin: 10px auto 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  color: #616161;
+  cursor: pointer;
+}
+.coming{
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #a8a8a8;
+
+  .upcoming{
+    width: 65px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: -10px;
+    border-radius: 5px;
+    font-size: 10px;
+    line-height: 20px;
+    text-align: center;
+    color: #eee;
+    background-color: #a7a7a7;
   }
 }
 </style>

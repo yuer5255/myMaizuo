@@ -8,6 +8,10 @@
 
       <!-- 卡片 -->
       <item-card></item-card>
+
+
+
+
     </div>
 </template>
 
@@ -15,6 +19,7 @@
     import 'swiper/dist/css/swiper.css'
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
     import itemCard from '@/components/itemCard'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: "index",
@@ -28,7 +33,7 @@
               spaceBetween: 30,
               centeredSlides: true,
               // autoplay: {
-              //   delay: 2500,
+              //   delay: 3500,
               //   disableOnInteraction: false
               // },
               loop: true,
@@ -38,22 +43,35 @@
               }
             }
           }
+        },
+        computed:{
+          ...mapGetters({
+            comingSoonFilms: 'getComingSoonFilms',
+            nowPlayingFilms: 'getNowPlayingFilms',
+            billboards: 'getBillboards'
+          })
+        },
+        created(){
+          console.log(this.$route.params.phoneNumber);
+          this.$store.dispatch('fetchComingSoonLists', 1, 5)
         }
     }
 </script>
 
 <style scoped lang="less">
+  .swiper-wrapper{
+    position: static !important;
+  }
   .swiper-container {
-    width: 100%;
-    height: 210px;
+    /*width: 100%;*/
+    /*height: 210px;*/
     /*margin: 20px auto;*/
-    background-color: #ccc;
+    /*background-color: #ccc;*/
+
 
     img{
        width: 100%;
        height: 100%;
     }
   }
-
-
 </style>
