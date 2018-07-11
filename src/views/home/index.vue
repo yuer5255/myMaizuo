@@ -7,7 +7,7 @@
       </swiper>
 
       <!-- 卡片 -->
-      <item-card></item-card>
+      <item-card :films="{comingSoon:comingSoonFilms, nowPlaying:nowPlayingFilms}"></item-card>
 
 
 
@@ -29,18 +29,11 @@
         data(){
           return {
             swiperOption: {
-              slidesPerView: 1,
-              spaceBetween: 30,
-              centeredSlides: true,
-              // autoplay: {
-              //   delay: 3500,
-              //   disableOnInteraction: false
-              // },
-              loop: true,
-              pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-              }
+              autoplay: {
+                delay: 3500,
+                disableOnInteraction: false
+              },
+              loop: true
             }
           }
         },
@@ -54,6 +47,8 @@
         created(){
           console.log(this.$route.params.phoneNumber);
           this.$store.dispatch('fetchComingSoonLists', 1, 5)
+          this.$store.dispatch('fetchNowPlayingLists', 1, 5)
+          this.$store.dispatch('fetchBillboards')
         }
     }
 </script>

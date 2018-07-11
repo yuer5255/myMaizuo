@@ -1,9 +1,9 @@
 <template>
   <div class="wrap">
     <ul class="container">
-      <li class="item" v-for="(item,index) in leftNavItem" :key="index">
+      <li class="item" v-for="(item,index) in leftNavItem" :key="index" @click="hideSlide" v-show="getLeftNavState">
         <router-link :to="item.path">
-          <div class="item-container">
+          <div v-show="getLeftNavState" class="item-container">
             <span>{{item.name}}</span>
             <span>
              <i class="iconfont  icon-arrow-right"></i>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState,mapGetters} from 'vuex'
     export default {
         name: "slide",
         data(){
@@ -32,11 +32,14 @@
           }
         },
         computed: {
-          ...mapState({
-            isShowSlide(state){
-              console.log(this.$store.state.leftNavState);
-            }
+          ...mapGetters({
+            getLeftNavState: 'leftNavState'
           })
+        },
+        methods: {
+          hideSlide(){
+            this.$store.commit('CHANGE_LEFTNAV_STATE',false);
+          }
         }
     }
 </script>

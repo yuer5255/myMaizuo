@@ -63,6 +63,7 @@ export const fetchNowPlayingLists = ({ commit }, page, count) => {
   return _get({ url, query }, commit)
     .then((json) => {
       if (json.status === 0) {
+        console.log(json.data);
         return commit('FETCH_NOW_PLAYING_SUCCESS', json.data)
       }
       return Promise.reject(new Error('FETCH_NOW_PLAYING failure'))
@@ -84,6 +85,7 @@ export const fetchFilmDetail = ({commit}, id) => {
   return _get({ url, query }, commit)
     .then((json) => {
       if (json.status === 0) {
+        console.log(json.data);
         return commit('FETCH_DETAIL_SUCCESS', json.data)
       }
       return Promise.reject(new Error('FETCH_DETAIL failure'))
@@ -105,6 +107,7 @@ export const fetchBillboards = ({commit}) => {
   return _get({ url, query }, commit)
     .then((json) => {
       if (json.status === 0) {
+        console.log(json.data);
         return commit('FETCH_BANNER_SUCCESS', json.data)
       }
       return Promise.reject(new Error('FETCH_BANNER_SUCCESS failure'))

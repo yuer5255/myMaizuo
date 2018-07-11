@@ -19,23 +19,6 @@
     <transition name="fade">
       <slide v-if="isShowSlide"></slide>
     </transition>
-
-    <!--<div>-->
-      <!--<mt-header fixed>-->
-        <!--<div @click="showSlide" slot="left">-->
-          <!--&lt;!&ndash;<mt-button icon="back">返回</mt-button>&ndash;&gt;-->
-          <!--<span class="toolbar-title-icon">-->
-            <!--<i class="iconfont icon-list"></i>-->
-          <!--</span>-->
-          <!--<span>卖座电影</span>-->
-        <!--</div>-->
-
-        <!--<router-link to="/user" class="user iconfont icon-user" slot="right"></router-link>-->
-      <!--</mt-header>-->
-      <!--<transition name="fade">-->
-        <!--<slide v-if="isShowSlide"></slide>-->
-      <!--</transition>-->
-    <!--</div>-->
   </nav>
 
 </template>
@@ -61,7 +44,6 @@
         methods:{
           showSlide(){
             this.isShow = !this.isShow;
-            console.log(this.isShow);
             this.$store.commit('CHANGE_LEFTNAV_STATE',this.isShow);
           }
         }
@@ -134,33 +116,14 @@
     }
   }
 
-  /*.mint-header{*/
-    /*background-color: #282828;*/
-    /*height: 50px;*/
-    /*line-height: 50px;*/
-    /*color: #efefef;*/
-
-    /*.toolbar-title-icon{*/
-      /*box-shadow: 1px 0 1px #363636;*/
-      /*color: #999;*/
-      /*width: 48px;*/
-      /*margin-left: 10px;*/
-      /*margin-right: 30px;*/
-    /*}*/
-
-    /*.user{*/
-      /*color: #999;*/
-    /*}*/
-  /*}*/
-
   .fade-enter-active, .fade-leave-active {
-    transition: all linear 1s;
+    transition: all linear .5s;
   }
   .fade-enter{
     opacity: 1;
     left: 50px;
   }
-  .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  .fade-leave-active /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
     left: 0;
   }

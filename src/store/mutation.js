@@ -14,11 +14,13 @@ const mutations = {
   },
   //进场动画开始
   [START_LOADING] (state) {
-    state.loading = true
+    state.loading = true;
+    console.log(state.loading);
   },
   //进场动画结束
   [FINISH_LOADING] (state) {
-    state.loading = false
+    state.loading = false;
+    console.log(state.loading);
   },
   // 获取即将上映电影列表
   [FETCH_COMING_SOON_SUCCESS] (state, data) {

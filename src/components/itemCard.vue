@@ -1,48 +1,56 @@
 <template>
     <div class="container">
-      <div class="card now-playing">
-        <!--1.图片-->
-        <div class="card-img">
-          <img src="../assets/img/item.jpg">
-        </div>
-        <!--2.文字-->
-        <div class="card-text">
-          <!--左侧电影名+影院-->
-          <div class="detail">
-            <p class="cinema-name">动物世界</p>
-            <p class="cinema-number">156家影院上映 612人购票</p>
+      <div class="card now-playing" v-for="(item,index) in nowPlaying" :key="item.id" @click="goToDetail(item.id)">
+        <div class="card-detail">
+          <!--1.图片-->
+          <div class="card-img">
+            <img :src="item.cover.origin">
           </div>
-          <!--右侧评分-->
-          <div class="score">8.5</div>
+          <!--2.文字-->
+          <div class="card-text">
+            <!--左侧电影名+影院-->
+            <div class="detail">
+              <p class="cinema-name">{{item.name}}</p>
+              <p class="cinema-number">{{item.cinemaCount}}家影院上映 {{item.watchCount}}人购票</p>
+            </div>
+            <!--右侧评分-->
+            <div class="score">{{item.grade}}</div>
+          </div>
         </div>
 
+
         <!-- 更多 -->
-        <div class="more-cinema">
+        <div class="more-cinema" v-if="index==nowPlaying.length-1">
           更多热映电影
         </div>
       </div>
 
-      <div class="card coming-soon">
+
+
+      <div class="card coming-soon" v-for="(item,index2) in comingSoon">
         <!-- 分割线 即将上映 -->
-        <div class="coming">
+        <div class="coming" v-if="index2=='0'">
           <p class="upcoming">即将上映</p>
         </div>
-        <!--1.图片-->
-        <div class="card-img">
-          <img src="../assets/img/coming.jpg">
-        </div>
-        <!--2.文字-->
-        <div class="card-text">
-          <!--左侧电影名+影院-->
-          <div class="detail">
-            <p class="cinema-name">我说的都是真的</p>
+
+        <div class="card-detail">
+          <!--1.图片-->
+          <div class="card-img">
+            <img :src="item.cover.origin">
           </div>
-          <!--右侧评分-->
-          <div class="cinema-date">12月31日</div>
+          <!--2.文字-->
+          <div class="card-text">
+            <!--左侧电影名+影院-->
+            <div class="detail">
+              <p class="cinema-name">{{item.name}}</p>
+            </div>
+            <!--右侧评分-->
+            <div class="cinema-date">{{getDate(item.premiereAt)}}</div>
+          </div>
         </div>
 
         <!-- 更多 -->
-        <div class="more-cinema">
+        <div class="more-cinema" v-if="index2==comingSoon.length-1">
           更多即将上映电影
         </div>
       </div>
@@ -50,8 +58,33 @@
 </template>
 
 <script>
+    import moment from 'moment'
     export default {
-        name: "item-card"
+        name: "item-card",
+        props: ['films'],
+        data(){
+          return{
+          }
+        },
+        methods:{
+          goToDetail(id){
+            this.$router.push({ name: 'detail', params: { id: id }})
+          },
+          getDate(date){
+            return moment(date).format('M月DD日上映')
+          }
+        },
+        computed:{
+          comingSoon(){
+            return this.films.comingSoon
+          },
+          nowPlaying(){
+            return this.films.nowPlaying
+          }
+        },
+        created(){
+
+        }
     }
 </script>
 
@@ -69,6 +102,10 @@
       height: 100%;
     }
   }
+  .card-detail{
+    margin-bottom: 20px;
+
+  }
 
   .card-text{
     height: 50px;
@@ -77,7 +114,7 @@
     margin: 0 10px;
     display: flex;
     justify-content: space-between;
-
+    box-shadow:1px 2px #ccc;
     .detail{
       padding: 13px 0 0 18px;
     }
@@ -113,7 +150,7 @@
   height: 30px;
   border: 1px solid #aaa;
   border-radius: 15px;
-  margin: 10px auto 30px;
+  margin: 20px auto 30px;
   text-align: center;
   line-height: 30px;
   font-size: 12px;

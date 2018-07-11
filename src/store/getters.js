@@ -1,5 +1,5 @@
 export const leftNavState = state => state.leftNavState;
-export const loading = state => state.loading;
+export const getLoading = state => state.loading;
 
 export const getComingSoonFilms = state => state.comingSoonFilms
 export const getNowPlayingFilms = state => state.nowPlayingFilms
