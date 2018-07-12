@@ -68,6 +68,7 @@
         },
         methods:{
           goToDetail(id){
+            console.log(id);
             this.$router.push({ name: 'detail', params: { id: id }})
           },
           getDate(date){

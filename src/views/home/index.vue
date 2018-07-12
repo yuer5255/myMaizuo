@@ -2,8 +2,7 @@
     <div>
       <!-- swiper -->
       <swiper :options="swiperOption">
-        <swiper-slide><img src="../../assets/img/swiper.jpg"></swiper-slide>
-        <swiper-slide><img src="../../assets/img/swiper.jpg"></swiper-slide>
+        <swiper-slide v-for="(item,index) in billboards" :key="item.id"><img :src="item.imageUrl"></swiper-slide>
       </swiper>
 
       <!-- 卡片 -->

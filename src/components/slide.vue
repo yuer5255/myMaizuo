@@ -23,7 +23,7 @@
           return{
             leftNavItem: [
               {name: '首页',path:'/home'},
-              {name: '影片',path:'/film'},
+              {name: '影片',path:'/list'},
               {name: '影院',path:'/cinema'},
               {name: '商城',path:'/shop'},
               {name: '我的',path:'/user'},

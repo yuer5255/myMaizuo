@@ -2,7 +2,7 @@
     <div class="container">
       <!--1. 图片-->
       <div class="top">
-        <img class="detail-img" src="../../assets/img/item.jpg">
+        <img class="detail-img" :src="getDetail.cover.origin">
       </div>
       <!--2. 影片简介-->
       <div class="intro">
@@ -38,8 +38,8 @@
             let actors = ''
             this.getDetail.actors && this.getDetail.actors.forEach(actor => {
               actors += actor.name + ' | '
-            })
-            return actors
+            });
+            return actors.slice(0,actors.length-2)
           }
         },
         methods:{
@@ -77,7 +77,8 @@
         padding-left: 4px;
       }
       .text-intro{
-        height: 18px;
+        /*height: 18px;*/
+        line-height: 18px;
         overflow: hidden;
         margin-bottom: 10px;
         padding-left: 20px;
@@ -104,7 +105,7 @@
         color: #fff;
         border: none;
         border-radius: 36px;
-        margin: 45px 0 40px 0 ;
+        margin: 45px 0 10px 0 ;
         padding: 8px 12px;
         font-size: 15px;
         outline: none;
